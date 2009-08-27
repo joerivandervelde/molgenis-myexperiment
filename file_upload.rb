@@ -1,5 +1,4 @@
-  require "tempfile"
-  require "stringio"
+
 
 
 module FileUpload

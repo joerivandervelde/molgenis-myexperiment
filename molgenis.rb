@@ -6,9 +6,10 @@
 # Defines an interface that all workflow type processors need to adhere to.
 module WorkflowProcessors
 require "molgenis_dot"
-require "molgenis_parser"
 require "molgenis_model"
-  #require 'file_upload'
+require "molgenis_parser"
+require "file_upload"
+require "libxml"
 
 
   class Molgenis
