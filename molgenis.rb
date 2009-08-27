@@ -1,10 +1,13 @@
-# myExperiment: lib/workflow_processors/interface.rb
+# myExperiment: lib/workflow_processors/molgenis.rb
 #
-# Copyright (c) 2008 University of Manchester and the University of Southampton.
+# Copyright (c) 2009 University of groningen
 # See license.txt for details.
 
 # Defines an interface that all workflow type processors need to adhere to.
 module WorkflowProcessors
+require "molgenis_dot"
+require "molgenis_parser"
+require "molgenis_model"
   #require 'file_upload'
 
 

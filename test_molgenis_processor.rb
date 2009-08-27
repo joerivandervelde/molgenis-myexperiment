@@ -9,6 +9,7 @@ require "../molgenis-gem/lib/molgenis_model.rb"
 if __FILE__ == $0
   
   #f = File.new("../molgenis-gem/test/test2.xml","r")
+  #git+ssh://git@github.com/joerivandervelde/molgenis-myexperiment.git
   
   path = "../molgenis-gem/test/"
   files = ["test1.xml","pheno_db.xml","fuge_db.xml","xgap_db_nochromosome.xml"]
