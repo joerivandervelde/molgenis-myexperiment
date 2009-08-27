@@ -1,0 +1,106 @@
+<% cache(:controller => 'workflows_cache', :action => 'internals', :id => workflow.id, :version => version) do %>
+<% if (model = workflow.get_workflow_model_object)%>
+<!-- Modules -->
+<% modules = model.modules %>
+<div class="fold">
+    <div class="foldTitle">
+        <%= info_icon_with_tooltip "These are the modules embedded within the workflow version" %>
+        Modules (<%= modules.nil? ? 0 : modules.length %>)
+    </div>
+    <div class="foldContent" style="display: none;">
+        <% unless modules.empty? %>
+        <table class="simple">
+            <% modules.each do |m| %>
+            <tr>
+                <td>
+                    <%= h m.get_label %>
+                </td>
+                <td>
+                    <%=m.description %>
+                </td>
+            </tr>
+            <% end %>
+        </table>
+        <% else %>
+        <p class="none_text">
+            None
+        </p>
+        <% end %>
+    </div>
+</div>
+<!-- Entities --><% entities = model.all_entities %>
+<div class="fold">
+    <div class="foldTitle">
+        <%= info_icon_with_tooltip "These are the entities embedded within the workflow version" %>
+        Entities (<%= entities.nil? ? 0 : entities.length %>)
+    </div>
+    <div class="foldContent" style="display: none;">
+        <% unless entities.empty? %>
+        <table class="simple">
+            <% entities.each do |e| %>
+            <tr>
+                <td>
+                    <%= h e.module_name + '.'+ e.name %>
+                </td>
+                <td>
+                    <%= e.description %>
+                </td>
+            </tr>
+            <% end %>
+        </table>
+        <% else %>
+        <p class="none_text">
+            None
+        </p>
+        <% end %>
+    </div>
+</div>
+<!-- Fields --><% entities = model.all_entities %>
+<div class="fold">
+    <div class="foldTitle">
+        Fields (<%= model.field_count %>)
+    </div>
+    <div class="foldContent" style="display: none;">
+        <% unless entities.empty? %>
+        <table class="simple">
+            <% entities.each do |e| %>
+            <tr>
+                <th colspan="3">
+                    <%=e.name %>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Field
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+            <% e.fields.each do |f| %>
+            <tr>
+                <td>
+                    <%= h f.name %>
+                </td>
+                <td>
+                    <%= f.type %><%if(f.type == "xref" || f.type =="mref") %>(<%=f.xref_entity %>,<%=f.xref_field %>)<%end %>
+                </td>
+                <td>
+                    <%=f.description %>
+                </td>
+            </tr>
+            <%end %>
+            <%end %>
+        </table>
+        <% else %>
+        <p class="none_text">
+            None
+        </p>
+        <% end %>
+    </div>
+</div>
+<%end%>
+<%end%>
