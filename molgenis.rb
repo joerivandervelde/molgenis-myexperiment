@@ -8,7 +8,7 @@ module WorkflowProcessors
   #require 'file_upload'
 
 
-  class MolgenisProcessor
+  class Molgenis
     
     # Begin Class Methods
     
@@ -37,9 +37,13 @@ module WorkflowProcessors
     end
     
     def self.recognised?(file)
-      molgenis_model = MOLGENIS::Parser.new.parse(file)
-      file.rewind
-      return !molgenis_model.nil?
+      begin 
+        molgenis_model = MOLGENIS::Parser.new.parse(file.read)
+        file.rewind
+        return !molgenis_model.nil?
+      rescue
+        false
+      end
     end
     
     def self.can_infer_metadata?
