@@ -59,6 +59,30 @@ if __FILE__ == $0
     puts terms
     
     puts "test completed"
+    
+    
+    #test internals
+    def info_icon_with_tooltip(tests) 
+      ''
+    end
+    
+    def h(val)
+      '<b>'+val+'</b>'
+    end
+    
+    b = binding
+    workflow = mp
+    version = "aap"
+    template = ""
+    open("_internals.rhtml") {|f|
+      template = f.to_a.join
+    }
+    template = ERB.new(template.gsub(/^\s+/, ""), 0, "%<>")
+    result = template.result(b)
+    out = File.new(file+".html","w")
+    out.write(result)
+    out.close
+    
   }
   
 end

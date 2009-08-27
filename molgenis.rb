@@ -23,7 +23,7 @@ module WorkflowProcessors
     
     # MUST be unique across all processors
     def self.display_name
-      "MOLGENIS application model"
+      "MOLGENIS"
     end
     
     def self.display_data_format
