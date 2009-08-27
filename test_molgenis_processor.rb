@@ -1,4 +1,5 @@
 require "rubygems"
+require "interface"
 require "molgenis"
 require "tempfile"
 require "stringio"
@@ -50,6 +51,14 @@ if __FILE__ == $0
     svg = File.new(file+".svg","w")
     svg.write(img.read)
     svg.close  
+    
+    
+    #test get search terms
+    puts "\ntest get search terms"
+    terms = mp.get_search_terms
+    puts terms
+    
+    puts "test completed"
   }
   
 end

@@ -5,14 +5,14 @@
 
 # Defines an interface that all workflow type processors need to adhere to.
 module WorkflowProcessors
-require "molgenis_dot"
-require "molgenis_model"
-require "molgenis_parser"
-require "file_upload"
-require "libxml"
-
-
-  class Molgenis
+  require "molgenis_dot"
+  require "molgenis_model"
+  require "molgenis_parser"
+  require "file_upload"
+  require "libxml"
+  
+  
+  class Molgenis < Interface
     
     # Begin Class Methods
     
@@ -102,8 +102,8 @@ require "libxml"
       i.close(false)
       
       img = StringIO.new(`dot -Tpng #{i.path}`)
-      img.extend FileUpload
-      img.original_filename = "#{filename}.png"
+                         img.extend FileUpload
+                         img.original_filename = "#{filename}.png"
       img.content_type = "image/png"
       img
     end
@@ -136,16 +136,38 @@ require "libxml"
       return nil if @molgenis_model.nil?
       words = StringIO.new
       
-      words << " "+ model.description
-      model.entities.each { |e|
-        words << " #{e.description}"
-        e.fields.each { |f| 
-          words << " "+f.description
-        } if entity.fields
-      } if model.entities
+      words << " "+ @molgenis_model.description
+      
+      @molgenis_model.modules.each { |m|
+        words << " #{m.description}"
+        words << " #{m.name}"
+        words << " #{m.label}"  
+        words << get_entity_search_terms(m.entities)
+      }
+      
+      words << get_entity_search_terms(@molgenis_model.entities)
       
       words.rewind
       words.read
+    end
+    
+    def get_entity_search_terms(entities)
+      words = StringIO.new
+      
+      entities.each { |e|
+        words << " #{e.description}"
+        words << " #{e.name}"
+        words << " #{e.label}"
+        e.fields.each { |f| 
+          words << " "+ f.description if !f.description.nil?
+          words << " "+ f.name
+          words << " "+ f.label if !f.label.nil?
+        } if e.fields
+      } if entities
+      
+      words.rewind
+      words.read
+      
     end
     
     def get_components
