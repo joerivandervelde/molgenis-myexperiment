@@ -58,7 +58,8 @@
 <!-- Fields --><% entities = model.all_entities %>
 <div class="fold">
     <div class="foldTitle">
-        Fields (<%= model.field_count %>)
+        <%= info_icon_with_tooltip "These are the fields embedded within the workflow version" %>
+		Fields (<%= model.field_count %>)
     </div>
     <div class="foldContent" style="display: none;">
         <% unless entities.empty? %>
