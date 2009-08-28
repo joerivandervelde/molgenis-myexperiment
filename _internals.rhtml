@@ -1,5 +1,6 @@
+<% cache(:controller => 'workflows_cache', :action => 'internals', :id => workflow.id, :version => version) do -%>
 
-<% if (model = workflow.get_workflow_model_object)%>
+<% if (model = workflow.get_workflow_model_object(version))%>
 <!-- Modules -->
 <% modules = model.modules %>
 <div class="fold">
@@ -118,4 +119,6 @@
         <% end %>
     </div>
 </div>
+<%end%>
+
 <%end%>
