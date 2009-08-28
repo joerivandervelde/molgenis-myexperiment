@@ -1,0 +1,43 @@
+<div style="margin: 0 0.5em;">
+	<h4>
+		Run this Workflow in the MOLGENIS Workbench...
+	</h4>
+	
+	<div class="option_box" style="margin-bottom: 1em;">
+		
+		<p style="text-align: center;">
+			<b>Option 1:</b>
+		</p>
+		
+		<ul class="sectionIcons">
+			<% launch_url = "http://molgenis.sourceforge.net/run?model="+@download_url %>
+			<li style="margin-left: 0;"><%= icon('launch', launch_url, "Launch this worklow (version #{@viewing_version_number.to_s}) directly in MOLGENIS online", nil, "Launch in MOLGENIS online") %></li>
+		</ul>
+	
+	</div>
+	
+	<div class="option_box">
+		
+		<p style="text-align: center;">
+			<b>Option 2:</b>
+		</p>
+		
+		<p style="font-size: 93%; text-align: center;">
+			Download this model into your Eclipse MOLGENIS workspace for customization ...'<br/>
+			<%= link_to @download_url, @download_url %><br/>
+			<small>[ <%= link_to_function "More Info" + expand_image, visual_effect(:toggle_blind, "run_molgenis_more_box", :duration => 0.3) -%> ]</small>
+		</p>
+		
+		<div id="run_molgenis_more_box" style="display: none;">
+			<p style="font-size: 85%; margin-top: 0.5em; text-align: center;">
+				The MOLGENIS developer workspace is available from <%= link_to "http://molgenis.sourceforge.net/download.html", "http://molgenis.sourceforge.net/download.html", :popup => true %>
+			</p>
+			
+			<p style="text-align: center; margin-top: 0.5em; font-size: 85%;">
+
+			</p>
+		</div>
+	
+	</div>
+
+</div>
