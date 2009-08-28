@@ -1,4 +1,4 @@
-<% cache(:controller => 'workflows_cache', :action => 'internals', :id => workflow.id, :version => version) do %>
+
 <% if (model = workflow.get_workflow_model_object)%>
 <!-- Modules -->
 <% modules = model.modules %>
@@ -40,7 +40,7 @@
             <% entities.each do |e| %>
             <tr>
                 <td>
-                    <%= h e.module_name + '.'+ e.name %>
+                    <%if e.module_name %><%= h e.module_name + '.'+ e.name %><%else%><%= h e.name %><%end%>
                 </td>
                 <td>
                     <%= e.description %>
@@ -65,8 +65,9 @@
         <table class="simple">
             <% entities.each do |e| %>
             <tr>
-                <th colspan="3">
-                    <%=e.name %>
+                <th colspan="3" style="text-align:left">
+					<%=e.name %>
+					<%if e.module_name %><br/>(module = <%=e.module_name%>)<%end%>
                 </th>
             </tr>
             <tr>
@@ -80,6 +81,19 @@
                     Description
                 </th>
             </tr>
+ 			<% e.get_implemented_fields(model).each do |f| %>
+            <tr>
+                <td>
+                    <font style="color:grey"><%= h f.name %></font>
+                </td>
+                <td>
+                    <font style="color:grey"><%= f.type %><%if(f.type == "xref" || f.type =="mref") %>(<%=f.xref_entity %>,<%=f.xref_field %>)<%end %></font>
+                </td>
+                <td>
+                    <font style="color:grey"><%=f.description %></font>
+                </td>
+            </tr>	
+			<%end%>		
             <% e.fields.each do |f| %>
             <tr>
                 <td>
@@ -92,6 +106,7 @@
                     <%=f.description %>
                 </td>
             </tr>
+			<tr><td colspan="3"><br/></td></tr>
             <%end %>
             <%end %>
         </table>
@@ -102,5 +117,4 @@
         <% end %>
     </div>
 </div>
-<%end%>
 <%end%>

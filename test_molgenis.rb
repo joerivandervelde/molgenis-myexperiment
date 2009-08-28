@@ -39,7 +39,7 @@ if __FILE__ == $0
     img = mp.get_preview_image
     img.rewind
     
-    png = File.new(file+".png","w")
+    png = File.new("test/"+file+".png","w")
     png.write(img.read)
     png.close
     
@@ -48,7 +48,7 @@ if __FILE__ == $0
     img = mp.get_preview_svg
     img.rewind
     
-    svg = File.new(file+".svg","w")
+    svg = File.new("test/"+file+".svg","w")
     svg.write(img.read)
     svg.close  
     
@@ -79,7 +79,7 @@ if __FILE__ == $0
     }
     template = ERB.new(template.gsub(/^\s+/, ""), 0, "%<>")
     result = template.result(b)
-    out = File.new(file+".html","w")
+    out = File.new("test/"+file+".html","w")
     out.write(result)
     out.close
     
