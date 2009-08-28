@@ -1,0 +1,1196 @@
+<!-- Modules -->
+<div class="fold">
+<div class="foldTitle">
+Modules (5)
+</div>
+<div class="foldContent" style="display: none;">
+<table class="simple">
+<tr>
+<td>
+<b>pheno.system</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>pheno.observation</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>pheno.target</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>pheno.variable</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>pheno.protocol</b></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<!-- Entities -->
+<div class="fold">
+<div class="foldTitle">
+Entities (18)
+</div>
+<div class="foldContent" style="display: none;">
+<table class="simple">
+<tr>
+<td>
+<b>pheno.system.Identifiable</b></td>
+<td>
+(For implementation purposes) The Identifiable
+				interface provides its sub-classes with a unique numeric identifier
+				within the
+				scope of one database. This class maps to
+				FuGE::Identifiable
+				(together with Nameable interface)</td>
+</tr>
+<tr>
+<td>
+<b>pheno.system.Nameable</b></td>
+<td>
+(For modeling purposes) The Nameable interface
+				provides its sub-classes a meaningful name that need not be unique.
+				This class maps to FuGE::Identifiable (together with
+				Identifiable
+				interface)</td>
+</tr>
+<tr>
+<td>
+<b>pheno.system.OntologySource</b></td>
+<td>
+The OntologySource class
+				defines a reference to a an
+				existing ontology or controlled
+				vocabulary from
+				which well-defined and
+				stable (ontology) terms can be
+				obtained. For
+				instance: MO, GO, EFO,
+				UMLS, etc. Use of existing
+				ontologies/vocabularies is recommended to
+				harmonize phenotypic
+				descriptions. This class maps to
+				FuGE::OntologySource, MAGE-TAB::TermSourceREF.</td>
+</tr>
+<tr>
+<td>
+<b>pheno.system.OntologyTerm</b></td>
+<td>
+The OntologyTerm class defines references to a single
+				entry from
+				an ontology or a controlled vocabulary. Other classes can
+				reference
+				to this OntologyTerm to harmonize naming of concepts. Each
+				term
+				should have a local, unique label.
+				Good practice is to label it
+				'sourceid:term', e.g. 'MO:cell' If no
+				suitable ontology term exists
+				one can define new terms locally in
+				which case there is no formal
+				accession for the term. In those cases
+				the local name should be
+				repeated in both term and termAccession.
+				Maps to
+				FuGE::OntologyIndividual; in MAGE-TAB there is no separate
+				entity to
+				model terms.
+			</td>
+</tr>
+<tr>
+<td>
+<b>pheno.observation.Investigation</b></td>
+<td>
+
+				The Investigation class defines self-contained units of
+				study, each
+				having a unique name and a group of actions (protocol
+				applications)
+				and/or results (in ObservedValues). For instance:
+				Framingham study.
+				Maps to
+				XGAP/FuGE Investigation
+				and MAGE-TAB experiment.
+				<br/>
+				Discussion: should we adopt MAGE-TAB::IDF type of minimal
+				information about an investigation?
+			</td>
+</tr>
+<tr>
+<td>
+<b>pheno.observation.ObservableFeature</b></td>
+<td>
+
+				The ObservableFeature class defines anything that can be
+				observed
+				(there may be many alternative protocols to measure them).
+				For
+				instance: systolic
+				blood pressure, Diastolic blood pressure,
+				Treatment for
+				hypertension. These names are unique within a data set.
+				Preferably each ObservableFeature should
+				be named according
+				to a
+				well-defined ontology. This class maps to XGAP
+				Trait, FuGE
+				DimensionElement and PaGE ObservableFeature. Multi-value features
+				can be grouped by protocol. For instance: blood pressure consists of
+				observations for features systolic and diastolic blood pressure.
+			</td>
+</tr>
+<tr>
+<td>
+<b>pheno.observation.ObservedValue</b></td>
+<td>
+
+				The ObservableValue class defines the actual
+				observation. For
+				instance: 160 mmHg, 90mmHg, "no treatment". This
+				class has no FuGE
+				equivalent because in FuGE the data -
+				protocolapplication association
+				is reversed, i.e. the
+				ProtocolApplication has input/output Data
+				(which could be
+				ObservedValues).
+				Maps to XGAP DataElement that uses
+				the FuGE approach,
+				so oberved
+				values are grouped into 'Data';
+				Maps to
+				PaGE observed value.
+			</td>
+</tr>
+<tr>
+<td>
+<b>pheno.observation.InferredValue</b></td>
+<td>
+
+				The InferredValue class defines ObservedValues that are inferred as
+				result of human or computational post-processing of previous
+				ObservedValues. The protocol used for this inference can be defined
+				via the
+				protocolApplication association that is inherited from
+				ObservedValue. For
+				instance: hypertensive = yes when mean arterial
+				pressure = 135 AND no
+				hypertension affecting medicine is taken. This
+				class has no direct
+				mapping to other models: XGAP would use
+				input/ouput Data; PaGE would
+				use a self reference on ObservedValue
+				<br/>
+				Implementation discussion: how to make the derivedFrom relationship
+				understandeable
+				in UI. Would need a multicolumn lookup including
+				target, feature,
+				value, and unit. Now one just gets a value.
+			</td>
+</tr>
+<tr>
+<td>
+<b>pheno.observation.ObservationTarget</b></td>
+<td>
+
+				An ObservationTarget class defines the subjects of
+				observation. For
+				instance: individual 1 from study x. This class maps
+				to XGAP subject
+				and maps to Page Abstract_Observation_Target. The
+				name of
+				observationTargets is unique within its Investigation.
+			</td>
+</tr>
+<tr>
+<td>
+<b>pheno.target.Individual</b></td>
+<td>
+
+				The Individuals class defines human cases that are used as
+				observation target. This class maps to
+				XGAP and PaGE individual.
+				<br/>
+				Discussion: what minimal properties should be hard-coded? E.g. sex
+				is assumed to be an observablefeature while in PAGE/XGAP it as a
+				direct property of individual.
+			</td>
+</tr>
+<tr>
+<td>
+<b>pheno.target.Panel</b></td>
+<td>
+ The Panel class defines groups of individuals that can
+				act as a single
+				ObservationTarget. Thus a whole group can have
+				ObservedValues such
+				as 'middle aged man' or 'recombinant mouse inbred
+				Line dba x b6'.
+				This class maps to XGAP/PaGE panel classes.
+			</td>
+</tr>
+<tr>
+<td>
+<b>pheno.variable.VariableDefinition</b></td>
+<td>
+The VariableDefinition class extends the
+				ObservableFeature class to enable precise definition of the unit of
+				ObservableFeature.</td>
+</tr>
+<tr>
+<td>
+<b>pheno.variable.CodeList</b></td>
+<td>
+
+				The CodeList class names lists of discrete values
+				that
+				are
+				available
+				as options for a particular VariableDefintion.
+			</td>
+</tr>
+<tr>
+<td>
+<b>pheno.variable.Code</b></td>
+<td>
+ The Code class names the code values for a
+				particular
+				codelist. It extends from ontologyTerm adding the option to define
+				pretty labels. For instance 'f=female', 'm=male'</td>
+</tr>
+<tr>
+<td>
+<b>pheno.protocol.Protocol</b></td>
+<td>
+
+				The Protocol class defines parameterizable
+				descriptions
+				of methods;
+				each protocol has a unique name within a dataset. Each
+				ProtocolApplication can define the
+				ObservableFeatures it can observe
+				as well as the
+				optional Parameters. For
+				instance:
+				SOP
+				for blood pressure
+				measurement used by UK biobank. This
+				class
+				maps
+				to FuGE/XGAP/MageTab
+				Protocol, but in contrast to FuGE it is
+				not
+				required to extend
+				protocol before use. Note that the FuGE's
+				mechanism of parameters
+				(for protocol) and parametervalues (for
+				application) is not shown.
+				Has no equivalent in PaGE.
+			</td>
+</tr>
+<tr>
+<td>
+<b>pheno.protocol.ProtocolApplication</b></td>
+<td>
+ A ProtocolApplication class defines the actual action
+				of
+				observation by instantiating a protocol and optional
+				ParameterValues. For
+				example: the action of
+				blood pressure
+				measurement
+				on 1000
+				individuals, using a particular
+				protocol,
+				resulting in 1000
+				associated observed values. This class
+				maps to
+				FuGE/XGAP
+				ProtocolApplication, but in FuGE
+				ProtocolApplications can
+				take
+				Material or Data (or both) as input and
+				produce Material or
+				Data (or
+				both) as output. Similar to
+				PaGE.ObservationMethod
+			</td>
+</tr>
+<tr>
+<td>
+<b>pheno.protocol.ProtocolParameter</b></td>
+<td>
+
+				ProtocolParameter represents a variable
+				of a Protocol that is
+				instantiated as a Parameter Value (see ParameterValue). For instance
+				'growth temperature' in a protocol
+				where yeast are grown at
+				permissive and non permissive temperatures. It implements Unit to
+				define the parameter type and allowed values.
+				<br/>
+				ProtocolParameter maps to FuGE::Parameter
+			</td>
+</tr>
+<tr>
+<td>
+<b>pheno.protocol.ParameterValue</b></td>
+<td>
+
+				A ParameterValue is instantiated when a
+				ProtocolApplication applies
+				a Protocol with Parameters.
+				ParameterValue implements Measurement to provide values and
+				Units for
+				ParameterValues. The FuGE equivalent to ParameterValue is
+				FuGE::ParameterValue
+			</td>
+</tr>
+</table>
+</div>
+</div>
+<!-- Fields -->
+<div class="fold">
+<div class="foldTitle">
+Fields (35)
+</div>
+<div class="foldContent" style="display: none;">
+<table class="simple">
+<tr>
+<th colspan="3" style="text-align:left">
+Identifiable<br/>(module = pheno.system)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>id</b></td>
+<td>
+int</td>
+<td>
+Automatically generated id-field</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Nameable<br/>(module = pheno.system)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>name</b></td>
+<td>
+varchar</td>
+<td>
+A human-readable and potentially ambiguous common identifier</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+OntologySource<br/>(module = pheno.system)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<font style="color:grey"><b>id</b></font>
+</td>
+<td>
+<font style="color:grey">int</font>
+</td>
+<td>
+<font style="color:grey">Automatically generated id-field</font>
+</td>
+</tr>	
+<tr>
+<td>
+<font style="color:grey"><b>name</b></font>
+</td>
+<td>
+<font style="color:grey">varchar</font>
+</td>
+<td>
+<font style="color:grey">A human-readable and potentially ambiguous common identifier</font>
+</td>
+</tr>	
+		
+<tr>
+<td>
+<b>ontologyURI</b></td>
+<td>
+hyperlink</td>
+<td>
+A URI that references the location of the ontology.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+OntologyTerm<br/>(module = pheno.system)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<font style="color:grey"><b>id</b></font>
+</td>
+<td>
+<font style="color:grey">int</font>
+</td>
+<td>
+<font style="color:grey">Automatically generated id-field</font>
+</td>
+</tr>	
+		
+<tr>
+<td>
+<b>term</b></td>
+<td>
+varchar</td>
+<td>
+The ontology term itself, also known as the 'local name' in some ontologies.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>termLabel</b></td>
+<td>
+string</td>
+<td>
+The label that is used to refer to this term inside this data set. For instance 'MO:cell'</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>termSource</b></td>
+<td>
+xref(OntologySource,id)</td>
+<td>
+The source ontology or controlled vocabulary list that ontology terms have been obtained from.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>termAccession</b></td>
+<td>
+varchar</td>
+<td>
+The accession number assigned to the ontology term in the source ontology. If empty it is assumed to be a locally defined term. </td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Investigation<br/>(module = pheno.observation)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<font style="color:grey"><b>id</b></font>
+</td>
+<td>
+<font style="color:grey">int</font>
+</td>
+<td>
+<font style="color:grey">Automatically generated id-field</font>
+</td>
+</tr>	
+<tr>
+<td>
+<font style="color:grey"><b>name</b></font>
+</td>
+<td>
+<font style="color:grey">varchar</font>
+</td>
+<td>
+<font style="color:grey">A human-readable and potentially ambiguous common identifier</font>
+</td>
+</tr>	
+		
+<tr>
+<th colspan="3" style="text-align:left">
+ObservableFeature<br/>(module = pheno.observation)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<font style="color:grey"><b>id</b></font>
+</td>
+<td>
+<font style="color:grey">int</font>
+</td>
+<td>
+<font style="color:grey">Automatically generated id-field</font>
+</td>
+</tr>	
+<tr>
+<td>
+<font style="color:grey"><b>name</b></font>
+</td>
+<td>
+<font style="color:grey">varchar</font>
+</td>
+<td>
+<font style="color:grey">A human-readable and potentially ambiguous common identifier</font>
+</td>
+</tr>	
+		
+<tr>
+<td>
+<b>ontologyReference</b></td>
+<td>
+xref(OntologyTerm,id)</td>
+<td>
+Reference to the formal ontology definition for this feature</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+ObservedValue<br/>(module = pheno.observation)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<font style="color:grey"><b>id</b></font>
+</td>
+<td>
+<font style="color:grey">int</font>
+</td>
+<td>
+<font style="color:grey">Automatically generated id-field</font>
+</td>
+</tr>	
+		
+<tr>
+<td>
+<b>investigation</b></td>
+<td>
+xref(Investigation,id)</td>
+<td>
+Reference to the Investigation this observedValue belongs to.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>time</b></td>
+<td>
+datetime</td>
+<td>
+time when the protocol was applied.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>observationTarget</b></td>
+<td>
+xref(ObservationTarget,id)</td>
+<td>
+Reference to the subject that has been observed</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>observableFeature</b></td>
+<td>
+xref(ObservableFeature,id)</td>
+<td>
+Reference to the feature that was observed</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>value</b></td>
+<td>
+string</td>
+<td>
+The value observed</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>protocolApplication</b></td>
+<td>
+xref(ProtocolApplication,id)</td>
+<td>
+Reference to the protocol application that produced this observation</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+InferredValue<br/>(module = pheno.observation)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>derivedFrom</b></td>
+<td>
+mref(ObservedValue,id)</td>
+<td>
+References to one or more observed values that were used to infer this observation</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+ObservationTarget<br/>(module = pheno.observation)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<font style="color:grey"><b>id</b></font>
+</td>
+<td>
+<font style="color:grey">int</font>
+</td>
+<td>
+<font style="color:grey">Automatically generated id-field</font>
+</td>
+</tr>	
+<tr>
+<td>
+<font style="color:grey"><b>name</b></font>
+</td>
+<td>
+<font style="color:grey">varchar</font>
+</td>
+<td>
+<font style="color:grey">A human-readable and potentially ambiguous common identifier</font>
+</td>
+</tr>	
+		
+<tr>
+<th colspan="3" style="text-align:left">
+Individual<br/>(module = pheno.target)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>species</b></td>
+<td>
+xref(OntologyTerm,id)</td>
+<td>
+</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>sex</b></td>
+<td>
+enum</td>
+<td>
+</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>mother</b></td>
+<td>
+xref(Individual,id)</td>
+<td>
+Refers to the mother of the individual.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>father</b></td>
+<td>
+xref(Individual,id)</td>
+<td>
+Refers to the father of the individual.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Panel<br/>(module = pheno.target)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>individuals</b></td>
+<td>
+mref(Individual,id)</td>
+<td>
+The list of individuals in this panel</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+VariableDefinition<br/>(module = pheno.variable)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>unit</b></td>
+<td>
+xref(OntologyTerm,id)</td>
+<td>
+Reference to the well-defined measurement unit used to observe this features (if feature is that concrete). E.g. mmHg</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>codeList</b></td>
+<td>
+xref(CodeList,id)</td>
+<td>
+</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+CodeList<br/>(module = pheno.variable)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<font style="color:grey"><b>id</b></font>
+</td>
+<td>
+<font style="color:grey">int</font>
+</td>
+<td>
+<font style="color:grey">Automatically generated id-field</font>
+</td>
+</tr>	
+<tr>
+<td>
+<font style="color:grey"><b>name</b></font>
+</td>
+<td>
+<font style="color:grey">varchar</font>
+</td>
+<td>
+<font style="color:grey">A human-readable and potentially ambiguous common identifier</font>
+</td>
+</tr>	
+		
+<tr>
+<th colspan="3" style="text-align:left">
+Code<br/>(module = pheno.variable)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<font style="color:grey"><b>id</b></font>
+</td>
+<td>
+<font style="color:grey">int</font>
+</td>
+<td>
+<font style="color:grey">Automatically generated id-field</font>
+</td>
+</tr>	
+		
+<tr>
+<td>
+<b>codeList</b></td>
+<td>
+xref(CodeList,id)</td>
+<td>
+The code-list this code is defined to be part of</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>value</b></td>
+<td>
+string</td>
+<td>
+The value that represents the code in the data</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>label</b></td>
+<td>
+string</td>
+<td>
+The pretty label that represents the human understandeable meaning of the code. For instance the label on a CRF.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>ontologyTerm</b></td>
+<td>
+xref(OntologyTerm,id)</td>
+<td>
+</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Protocol<br/>(module = pheno.protocol)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<font style="color:grey"><b>id</b></font>
+</td>
+<td>
+<font style="color:grey">int</font>
+</td>
+<td>
+<font style="color:grey">Automatically generated id-field</font>
+</td>
+</tr>	
+<tr>
+<td>
+<font style="color:grey"><b>name</b></font>
+</td>
+<td>
+<font style="color:grey">varchar</font>
+</td>
+<td>
+<font style="color:grey">A human-readable and potentially ambiguous common identifier</font>
+</td>
+</tr>	
+		
+<tr>
+<td>
+<b>observableFeatures</b></td>
+<td>
+mref(ObservableFeature,id)</td>
+<td>
+The features that can be observed using this protocol.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>protocolComponents</b></td>
+<td>
+mref(Protocol,id)</td>
+<td>
+The set of protocols that together to make up this protocol. For instance: a set of questionnaires.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+ProtocolApplication<br/>(module = pheno.protocol)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<font style="color:grey"><b>id</b></font>
+</td>
+<td>
+<font style="color:grey">int</font>
+</td>
+<td>
+<font style="color:grey">Automatically generated id-field</font>
+</td>
+</tr>	
+<tr>
+<td>
+<font style="color:grey"><b>name</b></font>
+</td>
+<td>
+<font style="color:grey">varchar</font>
+</td>
+<td>
+<font style="color:grey">A human-readable and potentially ambiguous common identifier</font>
+</td>
+</tr>	
+		
+<tr>
+<td>
+<b>time</b></td>
+<td>
+datetime</td>
+<td>
+time when the protocol was applied.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>protocol</b></td>
+<td>
+xref(Protocol,id)</td>
+<td>
+Reference to the protocol that is being used.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>investigation</b></td>
+<td>
+xref(Investigation,id)</td>
+<td>
+Reference to the Investigation this protocolapplication belongs to.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+ProtocolParameter<br/>(module = pheno.protocol)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<font style="color:grey"><b>id</b></font>
+</td>
+<td>
+<font style="color:grey">int</font>
+</td>
+<td>
+<font style="color:grey">Automatically generated id-field</font>
+</td>
+</tr>	
+<tr>
+<td>
+<font style="color:grey"><b>name</b></font>
+</td>
+<td>
+<font style="color:grey">varchar</font>
+</td>
+<td>
+<font style="color:grey">A human-readable and potentially ambiguous common identifier</font>
+</td>
+</tr>	
+		
+<tr>
+<td>
+<b>protocol</b></td>
+<td>
+xref(Protocol,id)</td>
+<td>
+</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+ParameterValue<br/>(module = pheno.protocol)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<font style="color:grey"><b>id</b></font>
+</td>
+<td>
+<font style="color:grey">int</font>
+</td>
+<td>
+<font style="color:grey">Automatically generated id-field</font>
+</td>
+</tr>	
+		
+<tr>
+<td>
+<b>protocolApplication</b></td>
+<td>
+xref(ProtocolApplication,id)</td>
+<td>
+Reference to the protocol application for which this parameter value was chosen for</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>protocolParameter</b></td>
+<td>
+xref(ProtocolParameter,id)</td>
+<td>
+Reference to the protocol parameter that is being bound by this value</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>value</b></td>
+<td>
+string</td>
+<td>
+The chosen value of the parameter within this protocol application</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+</table>
+</div>
+</div>

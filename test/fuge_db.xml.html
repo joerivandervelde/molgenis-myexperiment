@@ -1,0 +1,1056 @@
+<!-- Modules -->
+<div class="fold">
+<div class="foldTitle">
+Modules (2)
+</div>
+<div class="foldContent" style="display: none;">
+<table class="simple">
+<tr>
+<td>
+<b>fuge.common</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>fuge.bio</b></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<!-- Entities -->
+<div class="fold">
+<div class="foldTitle">
+Entities (21)
+</div>
+<div class="foldContent" style="display: none;">
+<table class="simple">
+<tr>
+<td>
+<b>fuge.common.Identifiable</b></td>
+<td>
+
+				Other classes in the model can be specified as
+				sub-classes, inheriting from Identifiable. Identifiable
+				gives classes a unique identifier within the scope and a
+				name that need not be unique. Identifiable also provides
+				a mechanism for annotating objects with
+				BibliographicReference(s) and DatabaseEntry(s).
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.Describable</b></td>
+<td>
+
+				Abstract class that allows subclasses to inherit
+				associations that enable objects to be given a text
+				description, additional annotations as Ontology entries,
+				a URI, associations to Audit for tracking changes, and
+				the association to Security for indicating permissions.
+				The URI, Annotations, PropertySets and Descriptions
+				associations inherited from Describable should only be
+				used to capture additional information where the model
+				contains no other structures that could be used to
+				capture the information.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.Security</b></td>
+<td>
+
+				Permission information for an object as to ownership,
+				write and read permissions.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.OntologyTerm</b></td>
+<td>
+
+				A single entry from an ontology or a controlled
+				vocabulary. If it is a simple controlled vocabulary,
+				there may be no formal accession for the term. In these
+				cases the local name should be repeated in both term and
+				termAccession. If the term has a value, the
+				OntologyIndividual will have a single DataProperty whose
+				value was the value for the property. For instance, for
+				an OntologyIndividual based on the MO ontology the
+				attributes might be: The term would be what is usually
+				called the local name in the Ontology, for instance
+				'Age'; The termAccession could be
+				'http://mged.sourceforge.net/ontologies/MGEDOntology.owl#Age'
+				or a an arbitrary accession if one exists; The
+				identifier is a unique identifier for individuals in the
+				scope of the FuGE instance; The inherited name attribute
+				should not be used; The ontologyURI of OntologySource
+				could be
+				'http://mged.sourceforge.net/ontologies/MGEDOntology.owl".
+				The OntologyTerm subclasses are instances of Ontology
+				classes and properties, not the actual terms themselves.
+				An OntologyIndividual, if based on an existing Ontology,
+				can be considered a statement that can be validated
+				against the referenced ontology. The subclasses and
+				their associations are based on the Ontology Definition
+				Model, ad/2005-04-13, submitted to the OMG as a response
+				to RFP ad/2003-03-40, Copyright Â© 2005 DSTC Pty Ltd.
+				Copyright Â© 2005 IBM Copyright Â© 2005 Sandpiper
+				Software, Inc under the standard OMG license terms.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.URI</b></td>
+<td>
+
+				A URI is short for Uniform Resource Identifier. A URI is
+				a compact sequence of characters that identifies an
+				abstract or physical resource.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.OntologySource</b></td>
+<td>
+
+				The source ontology or controlled vocabulary list that
+				ontology terms have been obtained from.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.Contact</b></td>
+<td>
+
+				A contact is either a person or an organization.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.Description</b></td>
+<td>
+
+				A free text description of an object.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.DatabaseReference</b></td>
+<td>
+
+				A reference to a record in a database.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.Database</b></td>
+<td>
+An address to a repository.</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.FugeProtocolApplication</b></td>
+<td>
+
+				The use of a protocol with the requisite Parameters and
+				ParameterValues. ProtocolApplications can take Material
+				or Data (or both) as input and produce Material or Data
+				(or both) as output. ProtocolApplication is abstract and
+				should be subclassed in the development of modular
+				formats. The subclass GenericProtocolApplication can be
+				used without extension.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.ParameterizableApplication</b></td>
+<td>
+
+				The interface that is the use of a Parameterizable
+				class.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.Protocol</b></td>
+<td>
+
+				A Protocol is a parameterizable description of a method.
+				ProtocolApplication is used to specify the
+				ParameterValues of its Protocol's Parameters. Protocol
+				should be extended in data formats. For cases where no
+				extension is developed, the subclass of Protocol,
+				GenericProtocol, should be used to capture experimental
+				protocols.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.Parameterizable</b></td>
+<td>
+
+				The Parameterizable interface encapsulates the
+				association of Parameters with ParameterValues.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.Software</b></td>
+<td>
+
+				Software used in the Protocol. Examples of Software
+				include: feature extraction software, clustering
+				software, etc... Software is abstract and should either
+				be extended by subclassing or the GenericSoftware class,
+				a functional version of Software, should be used without
+				extension.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.common.Equipment</b></td>
+<td>
+
+				The equipment (hardware) used in the Protocol. Examples
+				include: computers, scanners, wash stations etc...
+				Equipment is abstract and should either be extended by
+				subclassing or the GenericEquipment class, a functional
+				version of Equipment, should be used.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.bio.FugeInvestigation</b></td>
+<td>
+
+				An Investigation is a self-contained unit of study that
+				contains one or more types of 'omics technology.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.bio.Material</b></td>
+<td>
+
+				Material represents any kind of substance used in an
+				experimental workflow, such as whole organisms, cells,
+				DNA, solutions, compounds and experimental substances
+				(gels, arrays etc.). The Material class can be extended
+				by adding subclasses to model domain specific
+				properties, or the relationships to OntologyIndividual
+				can be used to describe the characteristics and type of
+				Material. Materials can be related to other materials
+				through a directed acyclic graph (represented by
+				ProtocolApplication(s)). Sub-component materials can be
+				represented by the self-association on Material (e.g.
+				Wells within a array). These associations are abstract
+				and should be extended to represent these semantics for
+				extensions of ProtocolApplication and Material.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.bio.HigherLevelAnalysis</b></td>
+<td>
+
+				A container for domain-specific analyses performed on
+				data. Subclasses must be created for different domains.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.bio.FugeData</b></td>
+<td>
+
+				Data can be an input to or an output from a
+				ProtocolApplication. Data may be produced from a
+				Material (data acquisition) or from another Data object
+				(data transformation). Examples of Data are gene
+				expression measurements, or phenotypes associated with
+				genetic manipulations.
+			</td>
+</tr>
+<tr>
+<td>
+<b>fuge.bio.FugeDimensionElement</b></td>
+<td>
+
+				A single point within a parent dimension. This class
+				should be extended.
+			</td>
+</tr>
+</table>
+</div>
+</div>
+<!-- Fields -->
+<div class="fold">
+<div class="foldTitle">
+Fields (47)
+</div>
+<div class="foldContent" style="display: none;">
+<table class="simple">
+<tr>
+<th colspan="3" style="text-align:left">
+Identifiable<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>name</b></td>
+<td>
+varchar</td>
+<td>
+The potentially ambiguous common identifier, such as a human-readable name for the instance.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Describable<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>id</b></td>
+<td>
+int</td>
+<td>
+automatically generated id-field</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Security<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>owners</b></td>
+<td>
+mref(Contact,id)</td>
+<td>
+null:The owner(s) of the security rights on the object.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+OntologyTerm<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>term</b></td>
+<td>
+varchar</td>
+<td>
+The ontology term itself, also known as the local name in some ontologies.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>termAccession</b></td>
+<td>
+varchar</td>
+<td>
+The accession number assigned to the ontology term in the source ontology. If there is no explicit accession assigned, then the term (localname) must be repeated (i.e. the term is the unique accession).  </td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>ontologySource</b></td>
+<td>
+xref(OntologySource,id)</td>
+<td>
+null:The source ontology or controlled vocabulary list that ontology terms have been obtained from.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+URI<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>location</b></td>
+<td>
+hyperlink</td>
+<td>
+The Uniform Resource Indicator for this object.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+OntologySource<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>ontologyURI</b></td>
+<td>
+hyperlink</td>
+<td>
+A URI that references the location of the ontology.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Contact<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>address</b></td>
+<td>
+varchar</td>
+<td>
+The address of the Contact.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>phone</b></td>
+<td>
+varchar</td>
+<td>
+The telephone number of the Contact including the suitable area codes.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>email</b></td>
+<td>
+varchar</td>
+<td>
+The email address of the Contact.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>fax</b></td>
+<td>
+varchar</td>
+<td>
+The fax number of the Contact.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>tollFreePhone</b></td>
+<td>
+varchar</td>
+<td>
+A toll free phone number for the Contact, including suitable area codes.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Description<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>text</b></td>
+<td>
+varchar</td>
+<td>
+The description.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>Describable_descriptions</b></td>
+<td>
+xref(Describable,id)</td>
+<td>
+Making MREF of 'Describable.descriptions': composite:Free hand text descriptions.  </td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+DatabaseReference<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>accession</b></td>
+<td>
+varchar</td>
+<td>
+The identifier used to look up the record.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>accessionVersion</b></td>
+<td>
+varchar</td>
+<td>
+The appropriate version of the accession (if applicable).</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>database_id</b></td>
+<td>
+xref(Database,id)</td>
+<td>
+null:Reference to the database where the DatabaseEntry instance can be found.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>IdentifiableReferences</b></td>
+<td>
+xref(Identifiable,id)</td>
+<td>
+Making MREF of 'Identifiable.databaseReferences': composite:References to entries in databases.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Database<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>version</b></td>
+<td>
+varchar</td>
+<td>
+The version of the Database.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>dburi</b></td>
+<td>
+hyperlink</td>
+<td>
+The location of the Database.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+FugeProtocolApplication<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>activityDate</b></td>
+<td>
+datetime</td>
+<td>
+When the protocol was applied.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>inputData</b></td>
+<td>
+mref(Data,id)</td>
+<td>
+null:The input data for a ProtocolApplication.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>protocol</b></td>
+<td>
+xref(Protocol,id)</td>
+<td>
+null:The protocol that is being used.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>protocolDeviation</b></td>
+<td>
+xref(Description,id)</td>
+<td>
+Self-reference (has-single): composite:References a Description object to define human readable protocol deviations.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>outputMaterials</b></td>
+<td>
+mref(Material,id)</td>
+<td>
+FIXME: upgraded(one-to-many to many-to-many). Association to the Material(s) created as output by this ProtocolApplication.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>outputData</b></td>
+<td>
+mref(Data,id)</td>
+<td>
+FIXME: upgraded(one-to-many to many-to-many). The data produced by a ProtocolApplication.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+ParameterizableApplication<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<th colspan="3" style="text-align:left">
+Protocol<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>outputTypes</b></td>
+<td>
+mref(OntologyTerm,id)</td>
+<td>
+null:The types of outputs produced by this Protocol e.g. organisms, solutions, data formats etc. </td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>inputTypes</b></td>
+<td>
+mref(OntologyTerm,id)</td>
+<td>
+null:The types of inputs this Protocol can take e.g. organisms, solutions, data formats etc. </td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>software</b></td>
+<td>
+mref(Software,id)</td>
+<td>
+null:Software used by this Protocol.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>equipment</b></td>
+<td>
+mref(Equipment,id)</td>
+<td>
+null:Hardware used by this protocol.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Parameterizable<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>types</b></td>
+<td>
+mref(OntologyTerm,id)</td>
+<td>
+null:The type of Equipment, Software or Protocol.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Software<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>version</b></td>
+<td>
+varchar</td>
+<td>
+The version of Software used.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>equipment</b></td>
+<td>
+mref(Equipment,id)</td>
+<td>
+FIXME: upgraded(one-to-many to many-to-many). Associates Equipment and Software together.  Indicates that a set of Software is run on a piece of Equipment.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Equipment<br/>(module = fuge.common)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>make</b></td>
+<td>
+xref(OntologyTerm,id)</td>
+<td>
+null:The equipment make, usually the organization that makes the equipment.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>equipmentParts</b></td>
+<td>
+mref(Equipment,id)</td>
+<td>
+null:This association can be used to specify sub-components of a "parent" Equipment instance. The cardinality allows pieces of Equipment to be associated with more than one parent, for example allowing the re-use different parts.   If a Protocol makes use of a "parent" Equipment and EquipmentParts, all of the sub-component Equipment instances must also be directly referenced from the Protocol using the Equipment association.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>software</b></td>
+<td>
+mref(Software,id)</td>
+<td>
+FIXME: upgraded(one-to-many to many-to-many). Associates Equipment and Software together.  Indicates that a set of Software is run on a piece of Equipment.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>model</b></td>
+<td>
+xref(OntologyTerm,id)</td>
+<td>
+null:The Equipment model.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+FugeInvestigation<br/>(module = fuge.bio)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>start</b></td>
+<td>
+datetime</td>
+<td>
+The start point of the investigation. (n.b. removed null constraint)</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>end</b></td>
+<td>
+datetime</td>
+<td>
+The end point of the investigation. (n.b. removed null constraint)</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+Material<br/>(module = fuge.bio)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>components</b></td>
+<td>
+mref(Material,id)</td>
+<td>
+null:Association from a Material to other Materials that are sub-components (such as wells within an array plate). If a subcomponent undergoes a ProtocolApplication, then the containing Material must also be an input to the ProtocolApplication and be output as a new Material or version of the Material.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>materialType</b></td>
+<td>
+xref(OntologyTerm,id)</td>
+<td>
+null:The type of material used, i.e. RNA, DNA, lipid, phosphoprotein, organism etc.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>characteristics</b></td>
+<td>
+mref(OntologyTerm,id)</td>
+<td>
+null:The characteristics of a Material. </td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>qualityControlStatistics</b></td>
+<td>
+mref(OntologyTerm,id)</td>
+<td>
+null:Measures of the quality of the Material.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+HigherLevelAnalysis<br/>(module = fuge.bio)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<td>
+<b>conclusion</b></td>
+<td>
+xref(Description,id)</td>
+<td>
+Self-reference (has-single): composite:The conclusion reached from the HigherLevelAnalysis.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>supportingData</b></td>
+<td>
+mref(Data,id)</td>
+<td>
+null:Association to the Data on which the HigherLevelAnalysis has been performed.</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<td>
+<b>hypothesis</b></td>
+<td>
+xref(Description,id)</td>
+<td>
+Self-reference (has-single): composite:The hypothesis being tested by the HigherLevelAnalysis</td>
+</tr>
+<tr><td colspan="3"><br/></td></tr>
+<tr>
+<th colspan="3" style="text-align:left">
+FugeData<br/>(module = fuge.bio)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+<tr>
+<th colspan="3" style="text-align:left">
+FugeDimensionElement<br/>(module = fuge.bio)</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+		
+</table>
+</div>
+</div>

@@ -1,0 +1,1780 @@
+<!-- Modules -->
+<div class="fold">
+<div class="foldTitle">
+Modules (4)
+</div>
+<div class="foldContent" style="display: none;">
+<table class="simple">
+<tr>
+<td>
+<b>xgap.cluster</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.core</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.subject</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait</b></td>
+<td>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<!-- Entities -->
+<div class="fold">
+<div class="foldTitle">
+Entities (44)
+</div>
+<div class="foldContent" style="display: none;">
+<table class="simple">
+<tr>
+<td>
+<b>xgap.cluster.Task</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.cluster.Job</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.cluster.Analysis</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.cluster.ParameterSet</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.cluster.ParameterName</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.cluster.ParameterValue</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.cluster.DataSet</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.cluster.DataName</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.cluster.DataValue</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.cluster.SelectedParameter</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.cluster.SelectedData</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.core.Investigation</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.core.ProtocolApplication</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.core.BibliographicReference</b></td>
+<td>
+
+				Represents bibliographic references, including the most
+				common attributes. Note that because a
+				BibliographicReference is Identifiable, a DatabaseEntry
+				can also be specified.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.core.Data</b></td>
+<td>
+
+				Generic structure for describing data matrices such as
+				genotype result, gene expression measurement, QTL
+				calculation, etc.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.core.DimensionElement</b></td>
+<td>
+
+				Describes the biological material or subject which is
+				being 'measured' by an Data set.
+				<br/>
+				For example an 'Sample' extends from Item, which makes
+				it possible that a microarray-assay Data set such sample
+				(as DataElement can reference any Item).
+				<br/>
+				An DimensionElement is always linked to a single one
+				Investigation.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.core.DataElement</b></td>
+<td>
+
+				Generic data structure for aiming the values of a data
+				set as described in Data. Each DataElement describes a
+				cell in a data matrix of rows (from) and columns (to),
+				e.g., in "dataset X" it was measured that geneX (col)
+				relates to geneZ (row).
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.core.DecimalDataElement</b></td>
+<td>
+
+				A DataElement for storing decimal data.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.core.TextDataElement</b></td>
+<td>
+Store text data</td>
+</tr>
+<tr>
+<td>
+<b>xgap.subject.Species</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.subject.DataType</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.subject.Tissue</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.subject.SampleLabel</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.subject.Subject</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.subject.Strain</b></td>
+<td>
+
+				A variant or subtype of animal, plant, virus or
+				bacteria.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.subject.Individual</b></td>
+<td>
+Biological individuals.</td>
+</tr>
+<tr>
+<td>
+<b>xgap.subject.Sample</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.subject.PairedSample</b></td>
+<td>
+
+				A pair of samples labeled for a two-color microarray
+				experiment.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.MeasurementUnit</b></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.Locus</b></td>
+<td>
+
+				Common structure for entities that have a genomic
+				position. Typical examples of such traits are genes,
+				probes and markers.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.Trait</b></td>
+<td>
+
+				Traits that are being measured. Traits can be very
+				diverse. The specifics of these traits can be added, as
+				for example in a "Gene" (Gene extends Trait).
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.NMRBin</b></td>
+<td>
+
+			Shift of the NMR frequency due to the chemical environment.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.Clone</b></td>
+<td>
+
+			BAC clone fragment.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.Factor</b></td>
+<td>
+
+			Experimental conditions, such as temperature differences, batch effects etc.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.Gene</b></td>
+<td>
+
+				Trait annotations specific for genes.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.Protein</b></td>
+<td>
+
+				Trait annotations specific for proteins.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.Metabolite</b></td>
+<td>
+
+				Trait annotations specific for metabolites.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.Phenotype</b></td>
+<td>
+
+				Trait annotations specific for classical phenotypes.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.ProtocolElement</b></td>
+<td>
+
+				Quantitative treats that are part of a protocol. E.g.
+				microarray probes, marker set.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.Marker</b></td>
+<td>
+
+				Trait annotations specific for markers.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.Probe</b></td>
+<td>
+
+				A piece of sequence that reports for the expression of a
+				gene, typically spotted onto a microarray.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.Spot</b></td>
+<td>
+
+				This is the spot on a microarray.
+				<br/>
+				Note: We don't distinquish between probes (the sequence)
+				and spots (the sequence as spotted on the array).
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.ProbeSet</b></td>
+<td>
+
+				A set of Probes. E.g. Affymetrix probeset has multiple
+				probes.
+			</td>
+</tr>
+<tr>
+<td>
+<b>xgap.trait.MassPeak</b></td>
+<td>
+
+				A peak that has been selected within a mass spectrometry
+				experiment.
+			</td>
+</tr>
+</table>
+</div>
+</div>
+<!-- Fields -->
+<div class="fold">
+<div class="foldTitle">
+Fields (91)
+</div>
+<div class="foldContent" style="display: none;">
+<table class="simple">
+<tr>
+<th colspan="3">
+Task</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>OutputDataName</b></td>
+<td>
+varchar</td>
+<td>
+Name of the matrix that will be written</td>
+</tr>
+<tr>
+<td>
+<b>Timestamp</b></td>
+<td>
+decimal</td>
+<td>
+Timestamp in milliseconds since 1970 of this task.</td>
+</tr>
+<tr>
+<td>
+<b>Analysis</b></td>
+<td>
+xref(Analysis,id)</td>
+<td>
+</td>
+</tr>
+<tr>
+<th colspan="3">
+Job</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Task</b></td>
+<td>
+xref(Task,id)</td>
+<td>
+Reference to the task this job belongs to.</td>
+</tr>
+<tr>
+<td>
+<b>StatusCode</b></td>
+<td>
+decimal</td>
+<td>
+Status code of this task.</td>
+</tr>
+<tr>
+<td>
+<b>StatusText</b></td>
+<td>
+varchar</td>
+<td>
+Status text of this task.</td>
+</tr>
+<tr>
+<td>
+<b>StatusProgress</b></td>
+<td>
+decimal</td>
+<td>
+Percentage done.</td>
+</tr>
+<tr>
+<td>
+<b>Nr</b></td>
+<td>
+decimal</td>
+<td>
+Number of this job within the task.</td>
+</tr>
+<tr>
+<th colspan="3">
+Analysis</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Description</b></td>
+<td>
+varchar</td>
+<td>
+Optional description of this type of analysis.</td>
+</tr>
+<tr>
+<td>
+<b>ParameterSet</b></td>
+<td>
+xref(ParameterSet,id)</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>DataSet</b></td>
+<td>
+xref(DataSet,id)</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>TargetFileName</b></td>
+<td>
+varchar</td>
+<td>
+The file used to start a specific type of analysis on the cluster.</td>
+</tr>
+<tr>
+<th colspan="3">
+ParameterSet</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+ParameterName</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>ParameterSet</b></td>
+<td>
+xref(ParameterSet,id)</td>
+<td>
+</td>
+</tr>
+<tr>
+<th colspan="3">
+ParameterValue</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>ParameterName</b></td>
+<td>
+xref(ParameterName,id)</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>Value</b></td>
+<td>
+varchar</td>
+<td>
+Possible value of this parameter.</td>
+</tr>
+<tr>
+<th colspan="3">
+DataSet</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+DataName</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>DataSet</b></td>
+<td>
+xref(DataSet,id)</td>
+<td>
+</td>
+</tr>
+<tr>
+<th colspan="3">
+DataValue</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>DataName</b></td>
+<td>
+xref(DataName,id)</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>Value</b></td>
+<td>
+xref(Data,id)</td>
+<td>
+Possible reference of this Data.</td>
+</tr>
+<tr>
+<th colspan="3">
+SelectedParameter</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Task</b></td>
+<td>
+xref(Task,id)</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>ParameterName</b></td>
+<td>
+varchar</td>
+<td>
+Copied name of this parameter.</td>
+</tr>
+<tr>
+<td>
+<b>ParameterValue</b></td>
+<td>
+varchar</td>
+<td>
+Copied value of this parameter.</td>
+</tr>
+<tr>
+<th colspan="3">
+SelectedData</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Task</b></td>
+<td>
+xref(Task,id)</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>DataName</b></td>
+<td>
+varchar</td>
+<td>
+Copied name of this Data</td>
+</tr>
+<tr>
+<td>
+<b>DataValue</b></td>
+<td>
+varchar</td>
+<td>
+Copied referenced name of this Data</td>
+</tr>
+<tr>
+<th colspan="3">
+Investigation</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+ProtocolApplication</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Status</b></td>
+<td>
+enum</td>
+<td>
+The status of this protocolapplication (inprocess = still working on it, final = ready for further analysis).</td>
+</tr>
+<tr>
+<td>
+<b>Investigation</b></td>
+<td>
+xref(Investigation,id)</td>
+<td>
+Reference to the Investigation this protocolapplication belongs to.</td>
+</tr>
+<tr>
+<th colspan="3">
+BibliographicReference</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>authors</b></td>
+<td>
+varchar</td>
+<td>
+The names of the authors of the reference.</td>
+</tr>
+<tr>
+<td>
+<b>publication</b></td>
+<td>
+varchar</td>
+<td>
+The name of the journal, book etc.</td>
+</tr>
+<tr>
+<td>
+<b>publisher</b></td>
+<td>
+varchar</td>
+<td>
+The publisher of the publication.</td>
+</tr>
+<tr>
+<td>
+<b>editor</b></td>
+<td>
+varchar</td>
+<td>
+The editor(s) of the reference.</td>
+</tr>
+<tr>
+<td>
+<b>year</b></td>
+<td>
+int</td>
+<td>
+The year of publication.</td>
+</tr>
+<tr>
+<td>
+<b>volume</b></td>
+<td>
+varchar</td>
+<td>
+The volume name or number.</td>
+</tr>
+<tr>
+<td>
+<b>issue</b></td>
+<td>
+varchar</td>
+<td>
+The issue name or number.</td>
+</tr>
+<tr>
+<td>
+<b>pages</b></td>
+<td>
+varchar</td>
+<td>
+The page numbers.</td>
+</tr>
+<tr>
+<td>
+<b>title</b></td>
+<td>
+varchar</td>
+<td>
+The title of the BibliographicReference.</td>
+</tr>
+<tr>
+<td>
+<b>Investigation</b></td>
+<td>
+xref(Investigation,id)</td>
+<td>
+Reference to the Investigation this protocolapplication belongs to.</td>
+</tr>
+<tr>
+<th colspan="3">
+Data</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Investigation</b></td>
+<td>
+xref(Investigation,id)</td>
+<td>
+Reference to the Investigation this data is measured as part of.</td>
+</tr>
+<tr>
+<td>
+<b>RowType</b></td>
+<td>
+enum</td>
+<td>
+Type of the columns of this matrix. Each column refers to a Trait or Subject (DimensionElement). </td>
+</tr>
+<tr>
+<td>
+<b>ColType</b></td>
+<td>
+enum</td>
+<td>
+Type of the rows of this matrix. Each row refers to a Trait or Subject (DimensionElement)</td>
+</tr>
+<tr>
+<td>
+<b>ValueType</b></td>
+<td>
+enum</td>
+<td>
+Type of the values of this matrix. E.g. text strings or decimal numbers.</td>
+</tr>
+<tr>
+<td>
+<b>TotalRows</b></td>
+<td>
+int</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>TotalCols</b></td>
+<td>
+int</td>
+<td>
+</td>
+</tr>
+<tr>
+<th colspan="3">
+DimensionElement</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Investigation</b></td>
+<td>
+xref_single</td>
+<td>
+Reference to the investigation this belongs to.</td>
+</tr>
+<tr>
+<th colspan="3">
+DataElement</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>id</b></td>
+<td>
+int</td>
+<td>
+automatically generated id-field</td>
+</tr>
+<tr>
+<td>
+<b>Data</b></td>
+<td>
+xref(Data,id)</td>
+<td>
+Reference to the data this entity belongs to.</td>
+</tr>
+<tr>
+<td>
+<b>Col</b></td>
+<td>
+xref(DimensionElement,id)</td>
+<td>
+References the DimensionElement on one end of the relation. Can be ommited for 1D data (i.e., a data list)</td>
+</tr>
+<tr>
+<td>
+<b>Row</b></td>
+<td>
+xref(DimensionElement,id)</td>
+<td>
+References the DimensionElement on the other end of the relation.</td>
+</tr>
+<tr>
+<td>
+<b>RowIndex</b></td>
+<td>
+int</td>
+<td>
+Row position in the matrix.</td>
+</tr>
+<tr>
+<td>
+<b>ColIndex</b></td>
+<td>
+int</td>
+<td>
+Col position in the matrix.</td>
+</tr>
+<tr>
+<th colspan="3">
+DecimalDataElement</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Value</b></td>
+<td>
+decimal</td>
+<td>
+The value, e.g., correlation.</td>
+</tr>
+<tr>
+<th colspan="3">
+TextDataElement</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Value</b></td>
+<td>
+text</td>
+<td>
+The value, e.g., genotype strings like AA, BA, BB.</td>
+</tr>
+<tr>
+<th colspan="3">
+Species</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+DataType</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+Tissue</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+SampleLabel</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+Subject</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Species</b></td>
+<td>
+xref(Species,id)</td>
+<td>
+The species this subject is an instance of/part of/extracted from.</td>
+</tr>
+<tr>
+<th colspan="3">
+Strain</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>StrainType</b></td>
+<td>
+enum</td>
+<td>
+Indicate the type of Strain (Natural=wild type, Parental=parents of a cross, F1=First generation of cross, RCC=Recombinant congenic, CSS=chromosome substitution)</td>
+</tr>
+<tr>
+<td>
+<b>FounderStrains</b></td>
+<td>
+mref(Strain,id)</td>
+<td>
+The strain(s) that were crossed to create this strain.</td>
+</tr>
+<tr>
+<th colspan="3">
+Individual</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Strain</b></td>
+<td>
+xref(Strain,id)</td>
+<td>
+Refers to the strain this individual is part of.</td>
+</tr>
+<tr>
+<td>
+<b>Mother</b></td>
+<td>
+xref(Individual,id)</td>
+<td>
+Refers to the mother of the individual.</td>
+</tr>
+<tr>
+<td>
+<b>Father</b></td>
+<td>
+xref(Individual,id)</td>
+<td>
+Refers to the father of the individual.</td>
+</tr>
+<tr>
+<th colspan="3">
+Sample</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Individual</b></td>
+<td>
+xref(Individual,id)</td>
+<td>
+The individual from which this sample was taken.</td>
+</tr>
+<tr>
+<td>
+<b>Tissue</b></td>
+<td>
+xref(Tissue,id)</td>
+<td>
+The tissue from which this sample was taken.</td>
+</tr>
+<tr>
+<th colspan="3">
+PairedSample</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Subject1</b></td>
+<td>
+xref(Individual,id)</td>
+<td>
+The first subject</td>
+</tr>
+<tr>
+<td>
+<b>Label1</b></td>
+<td>
+xref(SampleLabel,id)</td>
+<td>
+Which channel or Fluorescent labeling is associated with the first subject</td>
+</tr>
+<tr>
+<td>
+<b>Subject2</b></td>
+<td>
+xref(Individual,id)</td>
+<td>
+The second sample</td>
+</tr>
+<tr>
+<td>
+<b>Label2</b></td>
+<td>
+xref(SampleLabel,id)</td>
+<td>
+Which channel or Fluorescent labeling is associated with the second subject</td>
+</tr>
+<tr>
+<th colspan="3">
+MeasurementUnit</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+Locus</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>cM</b></td>
+<td>
+decimal</td>
+<td>
+genetic map position in centi morgan (cM).</td>
+</tr>
+<tr>
+<td>
+<b>Chr</b></td>
+<td>
+varchar</td>
+<td>
+chromosome name or number string (1, 2, …, x, y)</td>
+</tr>
+<tr>
+<td>
+<b>bpStart</b></td>
+<td>
+long</td>
+<td>
+numeric basepair postion (5') on the chromosome</td>
+</tr>
+<tr>
+<td>
+<b>bpEnd</b></td>
+<td>
+long</td>
+<td>
+numeric basepair postion (3') on the chromosome</td>
+</tr>
+<tr>
+<td>
+<b>Species</b></td>
+<td>
+xref(Species,id)</td>
+<td>
+Reference to the species this position belongs to.</td>
+</tr>
+<tr>
+<td>
+<b>Seq</b></td>
+<td>
+text</td>
+<td>
+The FASTA text representation of the sequence.</td>
+</tr>
+<tr>
+<th colspan="3">
+Trait</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+NMRBin</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+Clone</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+Factor</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+Gene</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Symbol</b></td>
+<td>
+</td>
+<td>
+Main symbol this gene is known by (not necessarily unique, in constrast to 'name')</td>
+</tr>
+<tr>
+<td>
+<b>Aliases</b></td>
+<td>
+</td>
+<td>
+Alternative symbols this gene is known by, separated by ','</td>
+</tr>
+<tr>
+<td>
+<b>Orientation</b></td>
+<td>
+enum</td>
+<td>
+Orientation of the gene on the genome (F=forward, R=reverse)</td>
+</tr>
+<tr>
+<td>
+<b>Control</b></td>
+<td>
+bool</td>
+<td>
+Indicating whether this is a 'housekeeping' gene that can be used as control.</td>
+</tr>
+<tr>
+<th colspan="3">
+Protein</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Gene</b></td>
+<td>
+xref(Gene,id)</td>
+<td>
+The gene that produces this protein</td>
+</tr>
+<tr>
+<td>
+<b>Sequence</b></td>
+<td>
+text</td>
+<td>
+The aminoacid sequence.</td>
+</tr>
+<tr>
+<td>
+<b>Mass</b></td>
+<td>
+decimal</td>
+<td>
+The mass of this metabolite</td>
+</tr>
+<tr>
+<th colspan="3">
+Metabolite</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Formula</b></td>
+<td>
+varchar</td>
+<td>
+The chemical formula of a metabolite.</td>
+</tr>
+<tr>
+<td>
+<b>Mass</b></td>
+<td>
+decimal</td>
+<td>
+The mass of this metabolite</td>
+</tr>
+<tr>
+<td>
+<b>Structure</b></td>
+<td>
+text</td>
+<td>
+The chemical structure of a metabolite (in SMILES representation).</td>
+</tr>
+<tr>
+<th colspan="3">
+Phenotype</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Category</b></td>
+<td>
+varchar</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>Description</b></td>
+<td>
+varchar</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<b>Molecule</b></td>
+<td>
+varchar</td>
+<td>
+</td>
+</tr>
+<tr>
+<th colspan="3">
+ProtocolElement</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Protocol</b></td>
+<td>
+xref_single</td>
+<td>
+Reference to the protocol this trait is part of.</td>
+</tr>
+<tr>
+<th colspan="3">
+Marker</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+Probe</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>Mismatch</b></td>
+<td>
+bool</td>
+<td>
+Indicating whether the probe is a match</td>
+</tr>
+<tr>
+<td>
+<b>ProbeSet</b></td>
+<td>
+xref(ProbeSet,id)</td>
+<td>
+Optional: probeset this probe belongs to (e.g., in Affymetrix assays).</td>
+</tr>
+<tr>
+<th colspan="3">
+Spot</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>X</b></td>
+<td>
+int</td>
+<td>
+Row</td>
+</tr>
+<tr>
+<td>
+<b>Y</b></td>
+<td>
+int</td>
+<td>
+Column</td>
+</tr>
+<tr>
+<td>
+<b>GridX</b></td>
+<td>
+int</td>
+<td>
+Meta Row</td>
+</tr>
+<tr>
+<td>
+<b>GridY</b></td>
+<td>
+int</td>
+<td>
+Meta Column</td>
+</tr>
+<tr>
+<th colspan="3">
+ProbeSet</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<th colspan="3">
+MassPeak</th>
+</tr>
+<tr>
+<th>
+Field
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<b>MZ</b></td>
+<td>
+decimal</td>
+<td>
+Mass over charge ratio of this peak.</td>
+</tr>
+<tr>
+<td>
+<b>RetentionTime</b></td>
+<td>
+decimal</td>
+<td>
+The retention-time of this peak in minutes.</td>
+</tr>
+</table>
+</div>
+</div>
